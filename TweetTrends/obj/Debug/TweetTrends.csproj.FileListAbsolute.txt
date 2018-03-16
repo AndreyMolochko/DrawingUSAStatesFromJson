@@ -1,0 +1,10 @@
+D:\2andrey2\sem\4 semester\OOP\TweetTrends\TweetTrends\bin\Debug\TweetTrends.exe.config
+D:\2andrey2\sem\4 semester\OOP\TweetTrends\TweetTrends\bin\Debug\TweetTrends.exe
+D:\2andrey2\sem\4 semester\OOP\TweetTrends\TweetTrends\bin\Debug\TweetTrends.pdb
+D:\2andrey2\sem\4 semester\OOP\TweetTrends\TweetTrends\obj\Debug\TweetTrends.csprojResolveAssemblyReference.cache
+D:\2andrey2\sem\4 semester\OOP\TweetTrends\TweetTrends\obj\Debug\TweetTrends.Form1.resources
+D:\2andrey2\sem\4 semester\OOP\TweetTrends\TweetTrends\obj\Debug\TweetTrends.Properties.Resources.resources
+D:\2andrey2\sem\4 semester\OOP\TweetTrends\TweetTrends\obj\Debug\TweetTrends.csproj.GenerateResource.Cache
+D:\2andrey2\sem\4 semester\OOP\TweetTrends\TweetTrends\obj\Debug\TweetTrends.csproj.CoreCompileInputs.cache
+D:\2andrey2\sem\4 semester\OOP\TweetTrends\TweetTrends\obj\Debug\TweetTrends.exe
+D:\2andrey2\sem\4 semester\OOP\TweetTrends\TweetTrends\obj\Debug\TweetTrends.pdb
