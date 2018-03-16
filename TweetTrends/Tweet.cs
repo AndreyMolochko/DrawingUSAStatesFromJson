@@ -13,9 +13,9 @@ namespace TweetTrends
         String longitude;
         String latitude;
         String date;
-        String context;
+        public String context;
         String location;
-        Double averageSentiment;
+        Double averageSentiment { get; set; }
         public Tweet(String longitude,String latitude,String date, String context)
         {
             this.longitude = longitude;

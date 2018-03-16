@@ -20,7 +20,9 @@ namespace TweetTrends
         private void button1_Click(object sender, EventArgs e)
         {
             Data data = new Data("my_life.txt");
-            label1.Text = data.tweetsWithData[0];
+            // = data.tweetsWithData[0];
+            Sentiments sentiments = new Sentiments("sentiments.csv");
+            label1.Text=sentiments.getAverageSentiment(data.tweets[10].context).ToString();
         }
     }
 }
