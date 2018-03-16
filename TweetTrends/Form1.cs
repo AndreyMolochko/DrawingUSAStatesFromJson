@@ -22,7 +22,7 @@ namespace TweetTrends
             Data data = new Data("my_life.txt");
             // = data.tweetsWithData[0];
             Sentiments sentiments = new Sentiments("sentiments.csv");
-            label1.Text=sentiments.getAverageSentiment(data.tweets[10].context).ToString();
+            label1.Text=sentiments.getAverageSentiment(data.tweets[0].context).ToString();
         }
     }
 }
