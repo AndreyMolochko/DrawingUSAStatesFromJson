@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace TweetTrends
 {
+    //git remote add origin https://github.com/AndreyMolochko/TweetTrens.git
+    //git push -u origin master
     class Tweet
     {
         String longitude;

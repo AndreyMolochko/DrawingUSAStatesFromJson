@@ -16,5 +16,11 @@ namespace TweetTrends
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Data data = new Data("my_life.txt");
+            label1.Text = data.tweetsWithData[0];
+        }
     }
 }
