@@ -41,7 +41,7 @@ namespace TweetTrends
             {
                 if (str.Contains(sentis.ElementAt(i).Key))
                 {
-                    if (str[str.IndexOf(sentis.ElementAt(i).Key) - 1] == ' ' && str[str.IndexOf(sentis.ElementAt(i).Key) + sentis.ElementAt(i).Key.Length] ==' ')
+                    if (str[str.IndexOf(sentis.ElementAt(i).Key) - 1] == ' '  && str[str.IndexOf(sentis.ElementAt(i).Key) + sentis.ElementAt(i).Key.Length] ==' ')
                         answer += sentis.ElementAt(i).Value;
                 }
             }

@@ -24,5 +24,14 @@ namespace TweetTrends
             Sentiments sentiments = new Sentiments("sentiments.csv");
             label1.Text=sentiments.getAverageSentiment(data.tweets[0].context).ToString();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            String jsonn = "";
+            State state = new State();
+            Newtonsoft.Json.JsonConvert.PopulateObject(textBox1.Text, state);
+            MessageBox.Show(state.allStates.ContainsKey("WA").ToString());
+            //MessageBox.Show(state.WA.Count.ToString());
+        }
     }
 }

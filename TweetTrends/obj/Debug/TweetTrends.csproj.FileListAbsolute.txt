@@ -8,3 +8,5 @@ D:\2andrey2\sem\4 semester\OOP\TweetTrends\TweetTrends\obj\Debug\TweetTrends.csp
 D:\2andrey2\sem\4 semester\OOP\TweetTrends\TweetTrends\obj\Debug\TweetTrends.csproj.CoreCompileInputs.cache
 D:\2andrey2\sem\4 semester\OOP\TweetTrends\TweetTrends\obj\Debug\TweetTrends.exe
 D:\2andrey2\sem\4 semester\OOP\TweetTrends\TweetTrends\obj\Debug\TweetTrends.pdb
+D:\2andrey2\sem\4 semester\OOP\TweetTrends\TweetTrends\bin\Debug\Newtonsoft.Json.dll
+D:\2andrey2\sem\4 semester\OOP\TweetTrends\TweetTrends\bin\Debug\Newtonsoft.Json.xml
