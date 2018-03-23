@@ -11,14 +11,16 @@ namespace TweetTrends
     {
         public List<String> tweetsWithData;
         public List<Tweet> tweets;
+        public Parsing parsing;
         public Data(String filenameTweets)
         {
             tweetsWithData = new List<String>();
             tweets = new List<Tweet>();
+            parsing = new Parsing();
             StreamReader reader = new StreamReader(filenameTweets, Encoding.Default);            
             tweetsWithData.AddRange(System.IO.File.ReadAllLines(filenameTweets));            
             reader.Close();
-            ParseStringTweets();
+            ParseStringTweets();            
         }
         private void ParseStringTweets()
         {

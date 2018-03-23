@@ -22,7 +22,9 @@ namespace TweetTrends
             Data data = new Data("my_life.txt");
             // = data.tweetsWithData[0];
             Sentiments sentiments = new Sentiments("sentiments.csv");
-            label1.Text=sentiments.getAverageSentiment(data.tweets[0].context).ToString();
+            List<Coordinates> test = new List<Coordinates>();
+            //label1.Text=sentiments.getAverageSentiment(data.tweets[0].context).ToString();
+            label1.Text = data.parsing.state.coordinatesState.ElementAt(0).Value.ElementAt(1).latitude.ToString();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -30,7 +32,7 @@ namespace TweetTrends
             String jsonn = "";
             State state = new State();
             Newtonsoft.Json.JsonConvert.PopulateObject(textBox1.Text, state);
-            MessageBox.Show(state.allStates.ContainsKey("WA").ToString());
+            //MessageBox.Show(state.allStates.ContainsKey("WA").ToString());
             //MessageBox.Show(state.WA.Count.ToString());
         }
     }

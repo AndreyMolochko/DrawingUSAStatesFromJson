@@ -10,15 +10,11 @@ namespace TweetTrends
 {
     class State
     {
-        
-        //public List<List<List<List<double>>>> WA { get; set; }
-        public Dictionary<String,List<List<List<List<double>>>>> allStates;
+
+        public Dictionary<String, List<Coordinates>> coordinatesState;
         public State()
         {
-            //WA = new List<List<List<List<double>>>>();
-            allStates = new Dictionary<string, List<List<List<List<double>>>>>();
-            //allStates.Add("WA", WA);
-            //allStates.Add("WA", WA);
+            coordinatesState = new Dictionary<string, List<Coordinates>>();
         }
     }
     
