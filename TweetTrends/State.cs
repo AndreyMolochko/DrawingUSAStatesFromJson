@@ -11,10 +11,10 @@ namespace TweetTrends
     class State
     {
 
-        public Dictionary<String, List<Coordinates>> coordinatesState;
+        public Dictionary<String, List<List<Coordinates>>> coordinatesState;
         public State()
         {
-            coordinatesState = new Dictionary<string, List<Coordinates>>();
+            coordinatesState = new Dictionary<string, List<List<Coordinates>>>();
         }
     }
     

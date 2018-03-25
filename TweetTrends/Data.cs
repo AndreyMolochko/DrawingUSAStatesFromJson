@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace TweetTrends
 {
@@ -20,7 +22,8 @@ namespace TweetTrends
             StreamReader reader = new StreamReader(filenameTweets, Encoding.Default);            
             tweetsWithData.AddRange(System.IO.File.ReadAllLines(filenameTweets));            
             reader.Close();
-            ParseStringTweets();            
+            ParseStringTweets();
+           
         }
         private void ParseStringTweets()
         {
@@ -59,5 +62,14 @@ namespace TweetTrends
 
             }
         }
+        public void SetLocationTweet(Tweet tweet)
+        {
+            Double longitudeTweet = Convert.ToDouble(tweet.longitude);
+            Double latitudeTweet = Convert.ToDouble(tweet.latitude);
+            Double minDistance=1000;
+            String state="";
+            //for(int i)
+        }
+        
     }
 }

@@ -81,6 +81,7 @@
             this.Controls.Add(this.button1);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint_1);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -11,8 +11,8 @@ namespace TweetTrends
     //git push -u origin master
     class Tweet
     {
-        String longitude;
-        String latitude;
+        public String longitude;
+        public String latitude;
         String date;
         public String context;
         String location;
