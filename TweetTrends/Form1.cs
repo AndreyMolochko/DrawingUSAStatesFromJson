@@ -52,17 +52,33 @@ namespace TweetTrends
             //    {
             //        for (int z = 0; z < data.parsing.state.coordinatesState.ElementAt(i).Value.ElementAt(j).Count; z++)
             //        {
-            //            longit = float.Parse(data.parsing.state.coordinatesState.ElementAt(i).Value.ElementAt(j).ElementAt(z).longitude.Replace(".",","));
+            //            longit = float.Parse(data.parsing.state.coordinatesState.ElementAt(i).Value.ElementAt(j).ElementAt(z).longitude.Replace(".", ","));
             //            latit = float.Parse(data.parsing.state.coordinatesState.ElementAt(i).Value.ElementAt(j).ElementAt(z).latitude.Replace(".", ","));
             //            a.Add(new PointF(longit, latit));
             //        }
             //    }
             //}
-            a.Add(new PointF(-124.1f, 47.2f));
-            a.Add(new PointF(-105.1f, 105.2f));
+            //a.Add(new PointF(-124.1f, 47.2f));
+            //a.Add(new PointF(-160.1f, 71.2f));
             Graphics graphics = e.Graphics;
-            Pen pen = new Pen(Color.Red, 1);
+            //graphics.RotateTransform(-90);
+            for (int z = 0; z < data.parsing.state.coordinatesState.ElementAt(0).Value.ElementAt(0).Count; z++)
+            {
+                longit = float.Parse(data.parsing.state.coordinatesState.ElementAt(0).Value.ElementAt(0).ElementAt(z).longitude.Replace(".", ","));
+                latit = float.Parse(data.parsing.state.coordinatesState.ElementAt(0).Value.ElementAt(0).ElementAt(z).latitude.Replace(".", ","));
+                a.Add(new PointF(longit, latit));
+            }
+
+            graphics.ScaleTransform(9f, 9F);
+            Pen pen = new Pen(Color.Red, 0.1F);  
+            
             PointF[] ab = a.ToArray();
+            for(int i=0;i<ab.Length;i++)
+            {
+
+                ab[i].X += 220;
+                //ab[i].Y += ; 
+            }
             //Point[] a = { new Point(100, 100), new Point(400, 200) };            
             graphics.DrawPolygon(pen, ab);
             graphics.Dispose();
