@@ -46,10 +46,9 @@ namespace TweetTrends
             float longit;
             float latit;
             Graphics graphics = e.Graphics;
-            graphics.ScaleTransform(9f,9F);
-            graphics.RotateTransform(180);
-            graphics.TranslateTransform(0, 0);
+            graphics.ScaleTransform(13F,13F);
             graphics.ScaleTransform(1, -1);
+            //graphics.RotateTransform(180);            
 
             Pen pen = new Pen(Color.Red, 0.1F);
             List<PointF> a = new List<PointF>();
@@ -67,26 +66,26 @@ namespace TweetTrends
                     a.Clear();
                     for (int q = 0; q < ab.Length; q++)
                     {
-                        ab[q].X += 40;
-                        ab[q].Y -=90; 
+                        ab[q].X += 150;
+                        ab[q].Y -= 60;
                     }
                     graphics.DrawPolygon(pen, ab);
                 }
             }
 
-            for (int z = 0; z < data.parsing.state.coordinatesState.ElementAt(0).Value.ElementAt(0).Count; z++)
-            {
-                longit = float.Parse(data.parsing.state.coordinatesState.ElementAt(0).Value.ElementAt(0).ElementAt(z).longitude.Replace(".", ","));
-                latit = float.Parse(data.parsing.state.coordinatesState.ElementAt(0).Value.ElementAt(0).ElementAt(z).latitude.Replace(".", ","));
-                a.Add(new PointF(longit, latit));
-            }
-
+            //for (int z = 0; z < data.parsing.state.coordinatesState.ElementAt(0).Value.ElementAt(0).Count; z++)
+            //{
+            //    longit = float.Parse(data.parsing.state.coordinatesState.ElementAt(0).Value.ElementAt(0).ElementAt(z).longitude.Replace(".", ","));
+            //    latit = float.Parse(data.parsing.state.coordinatesState.ElementAt(0).Value.ElementAt(0).ElementAt(z).latitude.Replace(".", ","));
+            //    a.Add(new PointF(longit, latit));
+            //}
+            //////////////////////////////////////////////////
             //PointF[] ab = a.ToArray();
             //a.Clear();
             //for (int q = 0; q < ab.Length; q++)
             //{
-            //    ab[q].X += 220;
-            //    ab[i].Y += ;
+            //    ab[q].X += 180;
+            //    ab[q].Y -=50 ;
             //}
             //graphics.DrawPolygon(pen, ab);
 
@@ -102,19 +101,11 @@ namespace TweetTrends
             //for (int q = 0; q < abс.Length; q++)
             //{
             //    abс[q].X += 220;
-            //    //ab[i].Y += ; 
+            //    //ab[i].Y -=5 ; 
             //}
             //graphics.DrawPolygon(pen, abс);
 
             graphics.Dispose();
-            //a.Add(new PointF(-124.1f, 47.2f));
-            //a.Add(new PointF(-160.1f, 71.2f));
-
-            //Graphics.RotateTransform(-90);
-            
-
-          
-
         }
     }
 }
