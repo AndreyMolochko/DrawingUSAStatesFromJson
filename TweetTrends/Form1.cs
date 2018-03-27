@@ -34,9 +34,9 @@ namespace TweetTrends
 
         private void button2_Click(object sender, EventArgs e)
         {
-            String jsonn = "";
-            State state = new State();
-            Newtonsoft.Json.JsonConvert.PopulateObject(textBox1.Text, state);
+            //String jsonn = "";
+            //State state = new State();
+            //Newtonsoft.Json.JsonConvert.PopulateObject(textBox1.Text, state);
             //MessageBox.Show(state.allStates.ContainsKey("WA").ToString());
             //MessageBox.Show(state.WA.Count.ToString());
         }
@@ -45,23 +45,35 @@ namespace TweetTrends
         {
             float longit;
             float latit;
-            List<PointF> a = new List<PointF>();
-            //for (int i = 0; i < data.parsing.state.coordinatesState.Count; i++)
-            //{
-            //    for (int j = 0; j < data.parsing.state.coordinatesState.ElementAt(i).Value.Count; j++)
-            //    {
-            //        for (int z = 0; z < data.parsing.state.coordinatesState.ElementAt(i).Value.ElementAt(j).Count; z++)
-            //        {
-            //            longit = float.Parse(data.parsing.state.coordinatesState.ElementAt(i).Value.ElementAt(j).ElementAt(z).longitude.Replace(".", ","));
-            //            latit = float.Parse(data.parsing.state.coordinatesState.ElementAt(i).Value.ElementAt(j).ElementAt(z).latitude.Replace(".", ","));
-            //            a.Add(new PointF(longit, latit));
-            //        }
-            //    }
-            //}
-            //a.Add(new PointF(-124.1f, 47.2f));
-            //a.Add(new PointF(-160.1f, 71.2f));
             Graphics graphics = e.Graphics;
-            //graphics.RotateTransform(-90);
+            graphics.ScaleTransform(9f,9F);
+            graphics.RotateTransform(180);
+            graphics.TranslateTransform(0, 0);
+            graphics.ScaleTransform(1, -1);
+
+            Pen pen = new Pen(Color.Red, 0.1F);
+            List<PointF> a = new List<PointF>();
+            for (int i = 0; i < data.parsing.state.coordinatesState.Count; i++)
+            {
+                for (int j = 0; j < data.parsing.state.coordinatesState.ElementAt(i).Value.Count; j++)
+                {
+                    for (int z = 0; z < data.parsing.state.coordinatesState.ElementAt(i).Value.ElementAt(j).Count; z++)
+                    {
+                        longit = float.Parse(data.parsing.state.coordinatesState.ElementAt(i).Value.ElementAt(j).ElementAt(z).longitude.Replace(".", ","));
+                        latit = float.Parse(data.parsing.state.coordinatesState.ElementAt(i).Value.ElementAt(j).ElementAt(z).latitude.Replace(".", ","));
+                        a.Add(new PointF(longit, latit));
+                    }
+                    PointF[] ab = a.ToArray();
+                    a.Clear();
+                    for (int q = 0; q < ab.Length; q++)
+                    {
+                        ab[q].X += 40;
+                        ab[q].Y -=90; 
+                    }
+                    graphics.DrawPolygon(pen, ab);
+                }
+            }
+
             for (int z = 0; z < data.parsing.state.coordinatesState.ElementAt(0).Value.ElementAt(0).Count; z++)
             {
                 longit = float.Parse(data.parsing.state.coordinatesState.ElementAt(0).Value.ElementAt(0).ElementAt(z).longitude.Replace(".", ","));
@@ -69,19 +81,40 @@ namespace TweetTrends
                 a.Add(new PointF(longit, latit));
             }
 
-            graphics.ScaleTransform(9f, 9F);
-            Pen pen = new Pen(Color.Red, 0.1F);  
-            
-            PointF[] ab = a.ToArray();
-            for(int i=0;i<ab.Length;i++)
-            {
+            //PointF[] ab = a.ToArray();
+            //a.Clear();
+            //for (int q = 0; q < ab.Length; q++)
+            //{
+            //    ab[q].X += 220;
+            //    ab[i].Y += ;
+            //}
+            //graphics.DrawPolygon(pen, ab);
 
-                ab[i].X += 220;
-                //ab[i].Y += ; 
-            }
-            //Point[] a = { new Point(100, 100), new Point(400, 200) };            
-            graphics.DrawPolygon(pen, ab);
+            //graphics.DrawPolygon(pen, ab);
+            //for (int z = 0; z < data.parsing.state.coordinatesState.ElementAt(1).Value.ElementAt(0).Count; z++)
+            //{
+            //    longit = float.Parse(data.parsing.state.coordinatesState.ElementAt(1).Value.ElementAt(0).ElementAt(z).longitude.Replace(".", ","));
+            //    latit = float.Parse(data.parsing.state.coordinatesState.ElementAt(1).Value.ElementAt(0).ElementAt(z).latitude.Replace(".", ","));
+            //    a.Add(new PointF(longit, latit));
+            //}
+            //PointF[] abс = a.ToArray();
+
+            //for (int q = 0; q < abс.Length; q++)
+            //{
+            //    abс[q].X += 220;
+            //    //ab[i].Y += ; 
+            //}
+            //graphics.DrawPolygon(pen, abс);
+
             graphics.Dispose();
+            //a.Add(new PointF(-124.1f, 47.2f));
+            //a.Add(new PointF(-160.1f, 71.2f));
+
+            //Graphics.RotateTransform(-90);
+            
+
+          
+
         }
     }
 }
