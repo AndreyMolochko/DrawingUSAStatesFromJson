@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +20,11 @@ namespace TweetTrends
             InitializeComponent();
             data = new Data("my_life.txt");
             sentiments = new Sentiments("sentiments.csv");
+            data.SetLocationTweets();
+            for (int i = 0; i < data.tweets.Count; i++)
+                listBox1.Items.Add(data.tweets[i].location);
+            //label2.Text=
+            //for(int i=0;)
 
         }
         
@@ -63,6 +69,10 @@ namespace TweetTrends
                         a.Add(new PointF(longit, latit));
                     }
                     PointF[] ab = a.ToArray();
+                    GraphicsPath graphicsPath = new GraphicsPath();
+                    graphicsPath.AddPolygon(ab);
+                    if (graphicsPath.IsVisible(new PointF(-117F, 34F))) label2.Text = data.parsing.state.coordinatesState.ElementAt(i).Key;
+                    //data.parsing.state.AddGraphicsPath(ab, 1);                    
                     a.Clear();
                     for (int q = 0; q < ab.Length; q++)
                     {
@@ -72,39 +82,6 @@ namespace TweetTrends
                     graphics.DrawPolygon(pen, ab);
                 }
             }
-
-            //for (int z = 0; z < data.parsing.state.coordinatesState.ElementAt(0).Value.ElementAt(0).Count; z++)
-            //{
-            //    longit = float.Parse(data.parsing.state.coordinatesState.ElementAt(0).Value.ElementAt(0).ElementAt(z).longitude.Replace(".", ","));
-            //    latit = float.Parse(data.parsing.state.coordinatesState.ElementAt(0).Value.ElementAt(0).ElementAt(z).latitude.Replace(".", ","));
-            //    a.Add(new PointF(longit, latit));
-            //}
-            //////////////////////////////////////////////////
-            //PointF[] ab = a.ToArray();
-            //a.Clear();
-            //for (int q = 0; q < ab.Length; q++)
-            //{
-            //    ab[q].X += 180;
-            //    ab[q].Y -=50 ;
-            //}
-            //graphics.DrawPolygon(pen, ab);
-
-            //graphics.DrawPolygon(pen, ab);
-            //for (int z = 0; z < data.parsing.state.coordinatesState.ElementAt(1).Value.ElementAt(0).Count; z++)
-            //{
-            //    longit = float.Parse(data.parsing.state.coordinatesState.ElementAt(1).Value.ElementAt(0).ElementAt(z).longitude.Replace(".", ","));
-            //    latit = float.Parse(data.parsing.state.coordinatesState.ElementAt(1).Value.ElementAt(0).ElementAt(z).latitude.Replace(".", ","));
-            //    a.Add(new PointF(longit, latit));
-            //}
-            //PointF[] abс = a.ToArray();
-
-            //for (int q = 0; q < abс.Length; q++)
-            //{
-            //    abс[q].X += 220;
-            //    //ab[i].Y -=5 ; 
-            //}
-            //graphics.DrawPolygon(pen, abс);
-
             graphics.Dispose();
         }
     }
