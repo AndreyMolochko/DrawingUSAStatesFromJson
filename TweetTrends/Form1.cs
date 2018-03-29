@@ -18,7 +18,7 @@ namespace TweetTrends
         public Form1()
         {
             InitializeComponent();
-            data = new Data("my_life.txt");
+            data = new Data("obama.txt");
             //sentiments = new Sentiments("sentiments.csv");
             //data.SetLocationTweets();
             //data.SetStatesWithTweets();
@@ -58,9 +58,14 @@ namespace TweetTrends
             Graphics graphics = e.Graphics;
             graphics.ScaleTransform(13F,13F);
             graphics.ScaleTransform(1, -1);
+            Brush brushBlueViolet = Brushes.BlueViolet;
+            Brush brushBlue = Brushes.Blue;
+            Brush brushRed = Brushes.Red;
+            Brush brushOrangeRed = Brushes.Orange;            
+
             //graphics.RotateTransform(180);            
 
-            Pen pen = new Pen(Color.Red, 0.1F);
+            Pen pen = new Pen(Color.Black, 0.2F);
             List<PointF> a = new List<PointF>();
             for (int i = 0; i < data.parsing.state.coordinatesState.Count; i++)
             {
@@ -74,16 +79,24 @@ namespace TweetTrends
                     }
                     PointF[] ab = a.ToArray();
                     GraphicsPath graphicsPath = new GraphicsPath();
-                    graphicsPath.AddPolygon(ab);
+                    graphicsPath.AddPolygon(ab);    
+                   
                     if (graphicsPath.IsVisible(new PointF(-117F, 34F))) label2.Text = data.parsing.state.coordinatesState.ElementAt(i).Key;
                     //data.parsing.state.AddGraphicsPath(ab, 1);                    
                     a.Clear();
                     for (int q = 0; q < ab.Length; q++)
                     {
                         ab[q].X += 150;
-                        ab[q].Y -= 60;
+                        ab[q].Y -= 70;
                     }
                     graphics.DrawPolygon(pen, ab);
+                    double amountState = data.averageSentimentsState.ElementAt(i).Value;
+                    if (amountState < 0 && amountState > -10) graphics.FillPolygon(brushBlueViolet, ab);
+                    else if (amountState <= -10) graphics.FillPolygon(brushBlue, ab);
+                    else if (amountState > 0 && amountState < 10) graphics.FillPolygon(brushOrangeRed, ab);
+                    else if (amountState > 10) graphics.FillPolygon(brushRed, ab);
+
+                    //if(i==1)graphics.FillPolygon(brush, ab);
                 }
             }
             graphics.Dispose();
