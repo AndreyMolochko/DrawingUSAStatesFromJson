@@ -14,15 +14,18 @@ namespace TweetTrends
     public partial class Form1 : Form
     {
         Data data;
-        Sentiments sentiments;
+        
         public Form1()
         {
             InitializeComponent();
             data = new Data("my_life.txt");
-            sentiments = new Sentiments("sentiments.csv");
-            data.SetLocationTweets();
-            for (int i = 0; i < data.tweets.Count; i++)
-                listBox1.Items.Add(data.tweets[i].location);
+            //sentiments = new Sentiments("sentiments.csv");
+            //data.SetLocationTweets();
+            //data.SetStatesWithTweets();
+            //data.SetAverageSentTweet();
+            for (int i = 0; i < data.averageSentimentsState.Count; i++)
+                listBox1.Items.Add(data.averageSentimentsState.ElementAt(i).Key.ToString()+
+                    data.averageSentimentsState.ElementAt(i).Value.ToString());
             //label2.Text=
             //for(int i=0;)
 
@@ -34,8 +37,9 @@ namespace TweetTrends
             // = data.tweetsWithData[0];
             //Sentiments sentiments = new Sentiments("sentiments.csv");
             //List<Coordinates> test = new List<Coordinates>();
-            //label1.Text=sentiments.getAverageSentiment(data.tweets[0].context).ToString();
-            label1.Text = data.parsing.state.coordinatesState.ElementAt(0).Value.ElementAt(1).ElementAt(0).latitude.ToString();
+            //label1.Text=data.sentiments.getAverageSentiment(data.tweets[440].context).ToString();
+            label1.Text = data.tweets[1000].averageSentiment.ToString();
+            //label1.Text = data.parsing.state.coordinatesState.ElementAt(0).Value.ElementAt(1).ElementAt(0).latitude.ToString();
         }
 
         private void button2_Click(object sender, EventArgs e)

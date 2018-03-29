@@ -14,17 +14,27 @@ namespace TweetTrends
     {
         public List<String> tweetsWithData;
         public List<Tweet> tweets;
+        public Dictionary<String, List<Tweet>> stateWithTweet;
         public Parsing parsing;
+        public Sentiments sentiments;
+        public Dictionary<String, double> averageSentimentsState;
         public Data(String filenameTweets)
         {
+            sentiments = new Sentiments("sentiments.csv");
             tweetsWithData = new List<String>();
             tweets = new List<Tweet>();
             parsing = new Parsing();
+            stateWithTweet = new Dictionary<string, List<Tweet>>();
+            averageSentimentsState = new Dictionary<string, double>();
             StreamReader reader = new StreamReader(filenameTweets, Encoding.Default);            
             tweetsWithData.AddRange(System.IO.File.ReadAllLines(filenameTweets));            
             reader.Close();
             ParseStringTweets();
-           
+            SetLocationTweets();
+            SetStatesWithTweets();
+            SetAverageSentTweet();
+            SetAverageInState();                
+
         }
         private void ParseStringTweets()
         {
@@ -101,6 +111,44 @@ namespace TweetTrends
                         a.Clear();
                     }
                 }
+            }
+        }
+        public void SetStatesWithTweets()
+        {
+            List<Tweet> tweetState=new List<Tweet>();
+            for(int i = 0; i < parsing.state.coordinatesState.Count; i++)
+            {
+                for (int j = 0; j < tweets.Count; j++)
+                {
+                    if (tweets[j].location ==parsing.state.coordinatesState.ElementAt(i).Key )
+                    {
+                        tweetState.Add(tweets[j]);
+                    }
+                }
+                stateWithTweet.Add(parsing.state.coordinatesState.ElementAt(i).Key, new List<Tweet>(tweetState));
+                tweetState.Clear();
+            }
+        }
+        public void SetAverageInState()
+        {
+            //Dictionary<String, double> averageSentimentsState = new Dictionary<string, double>();
+            double averageAmount;
+            for(int i = 0; i < stateWithTweet.Count; i++)
+            {
+                averageAmount = 0;
+                for(int j = 0; j < stateWithTweet.ElementAt(i).Value.Count; j++)
+                {
+                    averageAmount += stateWithTweet.ElementAt(i).Value[j].averageSentiment;
+                }
+                averageSentimentsState.Add(stateWithTweet.ElementAt(i).Key, averageAmount);
+            }
+            //return averageSentimentsState;
+        }
+        public void SetAverageSentTweet()
+        {
+            for(int i = 0; i < tweets.Count; i++)
+            {
+                tweets[i].averageSentiment = sentiments.getAverageSentiment(tweets[i].context);
             }
         }
     }

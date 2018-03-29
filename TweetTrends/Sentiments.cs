@@ -37,27 +37,28 @@ namespace TweetTrends
         {
             string str = " "+words+" ";
             double answer = 0;
-            for (int i = 0; i < sentis.Count; i++)
-            {
-                if (str.Contains(sentis.ElementAt(i).Key))
-                {
-                    if (str[str.IndexOf(sentis.ElementAt(i).Key) - 1] == ' '  && str[str.IndexOf(sentis.ElementAt(i).Key) + sentis.ElementAt(i).Key.Length] ==' ')
-                        answer += sentis.ElementAt(i).Value;
-                }
-            }
-            //double value;
-            //str.Replace(',', ' ');
-            //str.Replace('.', ' ');
-            //str.Replace(',', ' ');
-            //tweetWords.AddRange(str.Split(' '));
-
-            //for(int i = 0; i < tweetWords.Count; i++)
+            //for (int i = 0; i < sentis.Count; i++)
             //{
-            //    if(sentis.TryGetValue(tweetWords[i],out value))
+            //    if (str.Contains(sentis.ElementAt(i).Key))
             //    {
-            //        answer += value;
+            //        if (str[str.IndexOf(sentis.ElementAt(i).Key) - 1] == ' '  && str[str.IndexOf(sentis.ElementAt(i).Key) + sentis.ElementAt(i).Key.Length] ==' ')
+            //            answer += sentis.ElementAt(i).Value;
             //    }
             //}
+            double value=0;
+            str.Replace(',', ' ');
+            str.Replace('.', ' ');
+            //str.Replace(',', ' ');
+            tweetWords.AddRange(str.Split(' '));
+
+            for (int i = 0; i < tweetWords.Count; i++)
+            {
+                if (sentis.TryGetValue(tweetWords[i], out value))
+                {
+                    answer += value;
+                }
+            }
+            tweetWords.Clear();
             return answer;
         }
     }
